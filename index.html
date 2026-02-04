@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For Adrika 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 420px;
+      animation: pop 1s ease;
+      position: relative;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #ff4d6d;
+      margin-bottom: 15px;
+    }
+
+    .name {
+      font-size: 32px;
+      color: #e63956;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+      position: relative;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .yes:hover {
+      background: #e63956;
+      transform: scale(1.1);
+    }
+
+    .no {
+      background: #fff;
+      color: #ff4d6d;
+      border: 2px solid #ff4d6d;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .heart {
+      font-size: 42px;
+      animation: beat 1s infinite;
+      color: #ff4d6d;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    .not-found {
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Music (Plays ONLY after YES) -->
+  <audio id="bgMusic" loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Main Page -->
+  <div class="container" id="main">
+    <div class="name">Adrika 💖</div>
+    <h1>Will you be my Valentine?</h1>
+    <p>You already have my heart 🥰</p>
+
+    <div class="buttons">
+      <button class="yes" onclick="yesClick()">Yes 💕</button>
+      <button class="no" id="noBtn">No 🙃</button>
+    </div>
+  </div>
+
+  <!-- YES Page -->
+  <div class="container hidden" id="yesPage">
+    <div class="heart">❤️</div>
+    <h1>Thank You, Adrika ✨</h1>
+    <p class="message">
+      You just made my day, my month,<br>
+      and honestly… my whole year 💕<br><br>
+      I promise to love you, support you,<br>
+      and make you smile every single day 🌸
+    </p>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const music = document.getElementById("bgMusic");
+
+    // NO button runs away 😈
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 250 - 125;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    function yesClick() {
+      music.play(); // Music starts ONLY after YES
+      document.getElementById("main").classList.add("hidden");
+      document.getElementById("yesPage").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>
