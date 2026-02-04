@@ -24,20 +24,19 @@
 
     .container {
       background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      padding: 40px 30px;
-      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      padding: 45px 35px;
+      border-radius: 24px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
       width: 90%;
-      max-width: 420px;
+      max-width: 460px;
       animation: pop 1s ease;
-      position: relative;
     }
 
     @keyframes pop {
       from {
-        transform: scale(0.8);
+        transform: scale(0.7);
         opacity: 0;
       }
       to {
@@ -46,23 +45,52 @@
       }
     }
 
-    h1 {
-      font-size: 26px;
-      color: #ff4d6d;
-      margin-bottom: 15px;
-    }
-
     .name {
-      font-size: 32px;
-      color: #e63956;
+      font-size: 34px;
       font-weight: bold;
+      color: #e63956;
       margin-bottom: 10px;
     }
 
-    p {
-      font-size: 16px;
+    h1 {
+      font-size: 26px;
+      color: #ff4d6d;
+      margin-bottom: 18px;
+    }
+
+    .big-love {
+      font-size: 34px;
+      font-weight: 700;
+      color: #e63956;
+      margin: 25px 0 15px;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(230,57,86,0.4);
+      }
+      to {
+        text-shadow: 0 0 25px rgba(230,57,86,0.8);
+      }
+    }
+
+    .romantic-text {
+      font-size: 18px;
+      line-height: 1.8;
       color: #333;
-      margin-bottom: 30px;
+      margin-top: 10px;
+    }
+
+    .heart {
+      font-size: 48px;
+      animation: beat 1s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
     }
 
     .buttons {
@@ -78,18 +106,11 @@
       border-radius: 30px;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.2s;
-      position: relative;
     }
 
     .yes {
       background: #ff4d6d;
       color: white;
-    }
-
-    .yes:hover {
-      background: #e63956;
-      transform: scale(1.1);
     }
 
     .no {
@@ -102,39 +123,17 @@
     .hidden {
       display: none;
     }
-
-    .message {
-      font-size: 17px;
-      line-height: 1.6;
-      color: #333;
-    }
-
-    .heart {
-      font-size: 42px;
-      animation: beat 1s infinite;
-      color: #ff4d6d;
-    }
-
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-    }
-
-    .not-found {
-      font-size: 24px;
-      color: #333;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- Background Music (Plays ONLY after YES) -->
+  <!-- Music -->
   <audio id="bgMusic" loop>
     <source src="romantic.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Main Page -->
+  <!-- QUESTION PAGE -->
   <div class="container" id="main">
     <div class="name">Adrika 💖</div>
     <h1>Will you be my Valentine?</h1>
@@ -146,15 +145,25 @@
     </div>
   </div>
 
-  <!-- YES Page -->
+  <!-- YES PAGE -->
   <div class="container hidden" id="yesPage">
     <div class="heart">❤️</div>
-    <h1>Thank You, Adrika ✨</h1>
-    <p class="message">
-      You just made my day, my month,<br>
-      and honestly… my whole year 💕<br><br>
-      I promise to love you, support you,<br>
-      and make you smile every single day 🌸
+
+    <div class="big-love">
+      Adrika, you are my choice ✨
+    </div>
+
+    <p class="romantic-text">
+      In a world full of people,<br>
+      my heart still chose <b>you</b>.<br><br>
+
+      You are not an option,<br>
+      you are my favorite feeling,<br>
+      my safe place, and my happiest thought 💕<br><br>
+
+      Thank you for saying yes,<br>
+      for choosing me,<br>
+      and for making my world brighter just by being in it 🌸
     </p>
   </div>
 
@@ -164,13 +173,13 @@
 
     // NO button runs away 😈
     noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 250 - 125;
+      const x = Math.random() * 260 - 130;
       const y = Math.random() * 200 - 100;
       noBtn.style.transform = `translate(${x}px, ${y}px)`;
     });
 
     function yesClick() {
-      music.play(); // Music starts ONLY after YES
+      music.play(); // Music ONLY after YES
       document.getElementById("main").classList.add("hidden");
       document.getElementById("yesPage").classList.remove("hidden");
     }
